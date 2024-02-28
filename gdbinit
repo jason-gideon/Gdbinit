@@ -38,6 +38,22 @@
 #
 
 # __________________gdb options_________________
+# 自定义list 显示的代码行数, 默认是10行, 这里设置为20行
+set listsize 40		                    
+
+# 当gdb调试时, 如果有fork子进程的, 而且需要同时调试父
+# 进程和子进程时, 需要设置下面参数(默认设置分别为
+# parent, on)
+# 如果不需要可以删除下面2行
+set follow-fork-mode child
+set detach-on-fork off
+
+# 每次调试时, 如果程序需要指定参数, 也可以在.gdbinit中提前
+# 配置好, 这样每次gdb时就不用重复输入了
+# 这里根据自己要调试程序的参数自定义设置, 
+# 不需要的可以删除或使用"#"注释掉
+set args --load-kmods info 
+
 
 # set to 1 to have ARM target debugging as default, use the "arm" command to switch inside gdb
 set $ARM = 0
@@ -2183,7 +2199,7 @@ end
 
 
 # _______________process control______________
-define n
+define nn
     if $argc == 0
         nexti
     end
@@ -2191,11 +2207,11 @@ define n
         nexti $arg0
     end
     if $argc > 1
-        help n
+        help nn
     end
 end
-document n
-Syntax: n <NUM>
+document nn
+Syntax: nn <NUM>
 | Step one instruction, but proceed through subroutine calls.
 | If NUM is given, then repeat it NUM times or till program stops.
 | This is alias for nexti.
