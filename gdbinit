@@ -2199,6 +2199,24 @@ end
 
 
 # _______________process control______________
+define sfc
+    set follow-fork-mode child 
+end
+document sfc
+Syntax: sfc 
+| Short call : set follow-fork-mode child
+end
+
+define sfp
+    set follow-fork-mode parent
+end
+document sfp
+Syntax: sfp
+| Short call : set follow-fork-mode parent
+end
+
+
+
 define nn
     if $argc == 0
         nexti
