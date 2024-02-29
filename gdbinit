@@ -45,8 +45,8 @@ set listsize 40
 # 进程和子进程时, 需要设置下面参数(默认设置分别为
 # parent, on)
 # 如果不需要可以删除下面2行
-set follow-fork-mode child
-set detach-on-fork off
+#set follow-fork-mode child
+#set detach-on-fork off
 
 # 每次调试时, 如果程序需要指定参数, 也可以在.gdbinit中提前
 # 配置好, 这样每次gdb时就不用重复输入了
